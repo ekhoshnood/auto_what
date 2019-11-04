@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path, include
-from . import views as Vmain
+from .views import home_screen
 
 
 urlpatterns = [
-    path('', Vmain.home_screen),
+    path('', home_screen),
     path('admin/', admin.site.urls),
+    path('shakhsi', include('personal.urls'))
 ]
