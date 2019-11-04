@@ -3,5 +3,24 @@
 {% block body %}
     <h2>this has come form override of base html</h2>
 
-    {% include 'personal/snippet/snippet.html' %}
+    <!--
+    {{ some_string }}<br>
+    {{ some_number }}
+
+    <p>{{ some_string }}</p>
+    <p>{{ some_number }}</p>
+
+    {% for item in my_list %}
+        {{ item }}<br>
+    {% endfor %}
+
+    <div>
+        {% include 'personal/snippet/snippet.html' %}
+    </div>
+
+    {% for item in my_list %}
+        {% include 'personal/snippet/snippet.html' with value=item %}
+    {% endfor %}
+
+
 {% endblock body %}
