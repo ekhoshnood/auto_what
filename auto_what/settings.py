@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     #my apps
     'personal',
+    'account',
 
     #system apps
     'django.contrib.admin',
@@ -71,6 +72,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'account.Account'
 
 WSGI_APPLICATION = 'auto_what.wsgi.application'
 
