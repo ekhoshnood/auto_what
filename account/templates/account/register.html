@@ -1,0 +1,28 @@
+{% extends base.html %}
+
+{% block title %}
+    <title>This is registration</title>
+{% endblock title %}
+
+{%  block body %}
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %} <!-- this is required for work properly
+                                this is encryption token, that is like : its a security thing and
+                                works like if you stay for too long on the form it will expire -->
+        {% for field in registration_form %}
+            <p>
+                {{ field.label_tag }}
+                {{ field }}
+
+                {%  if field.help_text  %}
+                    <small style="color: gray">{{ field.help_text }}</small>
+                {% endif %}
+
+
+            </p>
+        {% endfor %}
+
+        <button type="submit">Register</button>
+    </form>
+{% endblock body %}
