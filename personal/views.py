@@ -7,7 +7,7 @@ def personal_page(request):
     # context = {}
     # context['some_string'] = "this is the context string that's been pass to html"
     # context['some_number'] = 13900404
-    # return render(request, "personal/personal_home_screen.html", context)
+    # return render(request, "course_training/course_training_home_screen.html", context)
 
 
     ##second way
@@ -15,7 +15,7 @@ def personal_page(request):
     #     'some_string' : "this is the context string that's been pass to html",
     #     'some_number' : 13900404
     # }
-    # return render(request, "personal/personal_home_screen.html", context)
+    # return render(request, "course_training/course_training_home_screen.html", context)
 
 
     ##another thing
@@ -28,7 +28,7 @@ def personal_page(request):
     #
     # context = {}
     # context['my_list'] = list_of_values
-    # return render(request, "personal/personal_home_screen.html", context)
+    # return render(request, "course_training/course_training_home_screen.html", context)
 
 
     ## quering data base data table inside view and pass to template

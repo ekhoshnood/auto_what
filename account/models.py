@@ -64,7 +64,7 @@ class Account(AbstractBaseUser):
 
     # what they see when they login to their page
     def __str__(self):
-        return self.username
+        return self.email
 
     # these functions are required to make a custom user model ( they are actually permissions)
     def has_perm(self, perm, obj=None):

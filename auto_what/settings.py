@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     #my apps
     'personal',
     'account',
+    'course_training',
 
     #system apps
     'django.contrib.admin',

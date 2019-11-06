@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>This is course training page</title>
+{% endblock %}
+
+{% block body %}
+    <h2>this has come form override of base html</h2>
+
+
+    {% for account in accounts %}
+        <p><b>{{ account }} | {{ account.username }}</b></p>
+    {% endfor %}
+
+
+{% endblock body %}
