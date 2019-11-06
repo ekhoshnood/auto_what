@@ -1,4 +1,4 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {% block title %}
     <title>This is registration</title>
@@ -10,16 +10,25 @@
         {% csrf_token %} <!-- this is required for work properly
                                 this is encryption token, that is like : its a security thing and
                                 works like if you stay for too long on the form it will expire -->
-        {% for field in registration_form %}
-            <p>
-                {{ field.label_tag }}
-                {{ field }}
 
-                {%  if field.help_text  %}
+        <!-- as the form has different fields  -->
+        {% for field in registration_form %}
+
+            <p>
+                {{ field.label_tag }} <!-- name of the field as we have email, username and ... -->
+                {{ field }} <!-- print out the field itself -->
+
+                {%  if field.help_text  %} <!-- if any of field has any help text then display it -->
                     <small style="color: gray">{{ field.help_text }}</small>
                 {% endif %}
 
-
+            <!-- loop through any ptential errors  -->
+            <!-- how does form knows if it  has errors => if we do a post request => it checks if the form is valid
+                        if is not valid it still adds the form to the context and in that point if the form is not
+                        valid it's gonna have errors -->
+                {% for error in field.errors %}
+                    <p style="color: red">{{ error }}</p>
+                {% endfor %}
             </p>
         {% endfor %}
 
