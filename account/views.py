@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, AccountAuthenticationForm
+from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 
 
 def registration_view(request):
@@ -73,7 +73,28 @@ def login_view(request):
     context['login_form'] = form
     return render(request, 'account/login.html', context)
 
+def accoutn_view(request):
 
+    if not request.user.is_authenticated:
+        return redirect("login")
+    context = {}
+
+    if request.POST:
+        form = AccountUpdateForm(request.POST, instance=request.user) # user because in pk form we are getting pk of user
+        if form.is_valid():
+            form.save()
+
+    else:
+        form = AccountUpdateForm(
+            # values that are gonna be desplay as soon as the visit their profile
+            initial={
+                "email": request.user.email,
+                "username": request.user.username,
+            }
+        )
+
+    context['account_form'] = form
+    return render(request, "account/account.html", context)
 
 
 

@@ -34,3 +34,32 @@ class AccountAuthenticationForm(forms.ModelForm):
                 raise forms.ValidationError("نام کاربری یا پسور اشتباه می باشد.")
 
 
+
+class AccountUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ('email', 'username')
+
+    # clean individual property rather than going through all properties and it will run whether it is valid or not
+    def clean_email(self):
+        if self.is_valid(): # we need to make sure that field is valid and it does not equal other email that is already in database
+            email = self.cleaned_data['email']
+            try:
+                # if account exist
+                account = Account.objects.exclude(pk=self.instance.pk).get(email=email)
+            except Account.DoesNotExist:
+                return email
+            raise forms.ValidationError('Email "%s" is already in use.' % email)    # clean individual property rather than going through all properties and it will run whether it is valid or not
+
+    def clean_username(self):
+        if self.is_valid(): # we need to make sure that field is valid and it does not equal other email that is already in database
+            username = self.cleaned_data['username']
+            try:
+                # if account exist
+                account = Account.objects.exclude(pk=self.instance.pk).get(username=username)
+            except Account.DoesNotExist:
+                return username
+            raise forms.ValidationError('Username "%s" is already in use.' % username)
+
+
