@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from .forms import RegistrationForm
+from django.contrib.auth import login, authenticate, logout
+from .forms import RegistrationForm, AccountAuthenticationForm
 
 
 def registration_view(request):
@@ -43,9 +43,35 @@ def registration_view(request):
     return render(request, 'account/register.html', context)
 
 
+def logout_view(request):
+    logout(request)
+    return redirect("home")
 
+def login_view(request):
+    context = {}    #just like other views
 
+    user = request.user
+    if user.is_authenticated:       # if user is authenticated they don't neet to be on the login page
+        return redirect("home")
 
+    # if they are not authenticated then we shall proceed
+    if request.POST:    # a post request is made on login form
+        form = AccountAuthenticationForm(request.POST)
+        if form.is_valid():
+            email = request.POST['email']
+            password = request.POST['password']
+            user = authenticate(email=email, password=password)
+
+            if user: # if every thing above is correct then user exists and
+                login(request, user)
+                return redirect("home")
+
+    # if it is not a post request that means that they are in login page but they are not attempting to login
+    else:
+        form = AccountAuthenticationForm()
+
+    context['login_form'] = form
+    return render(request, 'account/login.html', context)
 
 
 

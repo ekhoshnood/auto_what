@@ -2,7 +2,18 @@
     {% block title %}
         <title>this is homepage title</title>
     {% endblock %}
-    <h1>this is homepage header</h1>
+    {% if request.user.is_authenticated %} <!-- if user is authenticated so it means that someone is already loged in -->
+        <p><a href="{% url "home" %}">Home</a> | <a href="{% url 'logout' %}">logout</a></p>
+        <p>Hello, {{ request.user.username }} </p><!-- look through url file
+                                                                                if there is any logout name to it -->
+    {% else %} <!-- so if user is not authenticated -->
+        <p>
+            <a href="{% url "home" %}">Home</a> |
+            <a href="{% url 'register' %}">Register</a> |
+            <a href="{% url 'login' %}">Login</a>
+        </p>
+    {% endif %}
+<hr>
 </head>
 
 <ul>
@@ -12,5 +23,6 @@
 </ul>
 
 <footer>
-    <h3>this is homepage footer</h3>
+    <hr>
+    <p>Footer </p>
 </footer>

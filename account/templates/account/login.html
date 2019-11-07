@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>This is login</title>
+{% endblock title %}
+
+{%  block body %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %} <!-- this is required for work properly
+                                this is encryption token, that is like : its a security thing and
+                                works like if you stay for too long on the form it will expire -->
+
+        <!-- as the form has different fields  -->
+        {% for field in login_form %}
+
+            <p>
+                {{ field.label_tag }} <!-- name of the field as we have email, username and ... -->
+                {{ field }} <!-- print out the field itself -->
+
+                {%  if field.help_text  %} <!-- if any of field has any help text then display it -->
+                    <small style="color: gray">{{ field.help_text }}</small>
+                {% endif %}
+            </p>
+        {% endfor %}
+
+            <!-- loop through any potential errors  -->
+            <!-- how does form knows if it  has errors => if we do a post request => it checks if the form is valid
+                        if is not valid it still adds the form to the context and in that point if the form is not
+                        valid it's gonna have errors -->
+        {% for field in login_form %}
+            {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        <!-- non error field : that is not unique to any particular field in the form like
+                if the password is bad or the login is bad or any error that is not uniqe to any particular field
+                    like they didnt enter password right so they will get this error-->
+        {% if login_form.non_field_errors %}
+            <div style="color: red">
+                <p>{{ login_form.non_field_errors }}</p>
+            </div>
+        {% endif %}
+
+        <button type="submit">Login</button>
+    </form>
+{% endblock body %}

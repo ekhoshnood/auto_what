@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from .views import home_screen
-from account.views import registration_view
+from account.views import registration_view, logout_view, login_view
 
 
 urlpatterns = [
@@ -9,5 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('training', include('course_training.urls')),
     path('shakhsi', include('personal.urls')),
-    path('register/', registration_view, name="register")
+    path('register/', registration_view, name="register"),
+    path('logout/', logout_view, name="logout"),
+    path('login/', login_view, name="login"),
 ]
