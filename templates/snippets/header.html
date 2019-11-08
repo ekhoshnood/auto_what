@@ -1,9 +1,45 @@
+
+    <div>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    {% if request.user.is_authenticated %} <!-- if user is authenticated so it means that someone is already loged in -->
+                        <p>Hello, {{ request.user.username }} </p><!-- look through url file if there is any logout name to it -->
+                    {% endif %}
+                </a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse"
+                    id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto">
+                        <li role="presentation" class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li role="presentation" class="nav-item"><a class="nav-link" href="#">Second Item</a></li>
+                        <li class="dropdown nav-item">
+                            <a data-toggle="dropdown" aria-expanded="false" class="dropdown-toggle nav-link" href="#">Dropdown </a>
+                            <div role="menu" class="dropdown-menu">
+                                <a role="presentation" class="dropdown-item" href="#">First Item</a>
+                                <a role="presentation" class="dropdown-item" href="#">Second Item</a>
+                                <a role="presentation" class="dropdown-item" href="#">Third Item</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <span class="navbar-text actions">
+                    <a class="login" href="#">Log In</a>
+                    <a class="btn btn-light action-button" role="button" href="#">Sign Up</a>
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+<hr>
+
+
 {% if request.user.is_authenticated %} <!-- if user is authenticated so it means that someone is already loged in -->
     <p><a href="{% url "home" %}">Home</a> |
         <a href="{% url 'account' %}">Account</a>  |
         <a href="{% url 'logout' %}">logout</a></p>
-    <p>Hello, {{ request.user.username }} </p><!-- look through url file
-                                                                            if there is any logout name to it -->
 {% else %} <!-- so if user is not authenticated -->
     <p>
         <a href="{% url "home" %}">Home</a> |
