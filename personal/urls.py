@@ -4,5 +4,5 @@ from .views import personal_page
 
 
 urlpatterns = [
-    path('', personal_page),
+    path('', personal_page, name="shakhsi"),
 ]

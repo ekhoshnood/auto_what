@@ -4,5 +4,5 @@ from .views import course_training_page
 
 
 urlpatterns = [
-    path('', course_training_page),
+    path('', course_training_page, name="training"),
 ]

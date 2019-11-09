@@ -8,4 +8,5 @@ def course_training_page(request):
     accounts        = Account.objects.all()
     context['accounts'] = accounts
 
-    return render(request, "base.html", context)
+    return render(request, "cource_training/course_training_home_screen.html", context)
+
