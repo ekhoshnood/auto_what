@@ -1,18 +1,22 @@
 <div>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-button">
         <div class="container">
-            <a class="navbar-brand" href="#">Website</a>
+            <a class="navbar-brand">Website</a>
             <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
+            <div class="collapse navbar-collapse" id="navcol-1">
+
+            <!-- LEFT MENU -->
                 <ul class="nav navbar-nav mr-auto">
                     <li role="presentation" class="nav-item"><a class="nav-link" href="{% url "home" %}">Home</a></li>
                     <li role="presentation" class="nav-item"><a class="nav-link" href="{% url 'training' %}">Training</a></li>
                     <li role="presentation" class="nav-item"><a class="nav-link" href="{% url 'shakhsi' %}">Shakhsi</a></li>
                 </ul>
+            <!-- END LEFT MENU -->
+
+            <!-- SIGN IN MENU -->
                 <span class="navbar-text actions">
                     {% if request.user.is_authenticated %}
                         <li class="dropdown nav-item">
@@ -28,6 +32,8 @@
                         <a class="btn btn-light action-button" role="button" href="{% url 'register' %}">Sign Up</a>
                     {% endif %}
                 </span>
+            <!-- END SIGN IN MENU -->
+
             </div>
         </div>
     </nav>

@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
+
 {% block title %}
     <title>This is course training page</title>
 {% endblock title %}
 
 {% block body %}
-    <h2>this has come form override of base html</h2>
-    <h2>These are registered users : </h2>
+    <div>
+        <h2 align="center">this has come form override of base html</h2>
+    </div>
+    <div class="container" align="center">
+        <h2>These are registered users : </h2>
 
-    {% for account in accounts %}
-        <p><b>{{ account }} | {{ account.username }}</b></p>
-    {% endfor %}
-
+        {% for account in accounts %}
+            <p><b>{{ account }} | {{ account.username }}</b></p>
+        {% endfor %}
+    </div>
 {% endblock body %}
