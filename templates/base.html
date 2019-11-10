@@ -1,17 +1,10 @@
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "header.css" %}">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--
-<style>
-    html{
-        height: 100%;
-    }
-</style>
--->
-
 
 <html>
     <head>
+        {% block head %}
+        {% endblock head %}
+
         {% block title %}
             <title>this is homepage title</title>
         {% endblock title%}
@@ -19,7 +12,7 @@
         {% include 'snippets/header.html' %}
     </head>
 
-    <body class="body">
+    <body>
         <hr>
         <ul>
             {% block body %}
@@ -27,6 +20,5 @@
             {% endblock body %}
         </ul>
 
-        {% include 'snippets/footer.html' %}
     </body>
 </html>
