@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import home_screen
 from account.views import registration_view, logout_view, login_view, accoutn_view
+from iframe_test.views import iframe
 
 
 urlpatterns = [
@@ -13,4 +14,5 @@ urlpatterns = [
     path('logout/', logout_view, name="logout"),
     path('login/', login_view, name="login"),
     path('account/', accoutn_view, name="account"),
+    path('iframe/', iframe, name="iframe"),
 ]
