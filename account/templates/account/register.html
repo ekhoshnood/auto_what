@@ -10,6 +10,9 @@
             background: #1d2124;
             border-radius: 10px;
         }
+        .h2{
+            color: white;
+        }
     </style>
 
 
@@ -19,7 +22,7 @@
             {% csrf_token %} <!-- this is required for work properly
                                 this is encryption token, that is like : its a security thing and
                                 works like if you stay for too long on the form it will expire -->
-            <h2 class="sr-only">Login Form</h2>
+            <h2 class="h2" style="text-align: center;">Register Form</h2>
             <div class="illustration">
                 <i class="icon ion-ios-locked-outline"></i>
             </div>

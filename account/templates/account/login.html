@@ -10,7 +10,12 @@
         .login-box{
             background: #1d2124;
             border-radius: 10px;
+            text-align: center;
         }
+        .h3{
+            color: white;
+        }
+
     </style>
 
 
@@ -20,7 +25,7 @@
                 {% csrf_token %} <!-- this is required for work properly
                                     this is encryption token, that is like : its a security thing and
                                     works like if you stay for too long on the form it will expire -->
-                <h2 class="sr-only">Login Form</h2>
+                <h2 class="h3" style="text-align: center">Login Form</h2>
                 <div class="illustration">
                     <i class="icon ion-ios-locked-outline"></i>
                 </div>
@@ -51,7 +56,7 @@
                 <div class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Log In</button>
                 </div>
-                <a  class="forgot" href="#">Forgot your email or password?</a>
+                <a href="{% url 'password_reset' %}">Forgot Your password?(Reset Password)</a>
             </form>
             <br>
         </div>

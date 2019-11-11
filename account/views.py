@@ -82,8 +82,12 @@ def accoutn_view(request):
     if request.POST:
         form = AccountUpdateForm(request.POST, instance=request.user) # user because in pk form we are getting pk of user
         if form.is_valid():
+            form.initial = {
+                "email" : request.POST['email'],
+                "username": request.POST['username'],
+            }
             form.save()
-
+            context['success_message'] = "تغییرات با موفقیت ذخیره شد."
     else:
         form = AccountUpdateForm(
             # values that are gonna be desplay as soon as the visit their profile
