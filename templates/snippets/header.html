@@ -135,6 +135,11 @@
                     <li role="presentation" class="nav-item">
                         <a class="nav-link" href="{% url 'iframe' %}">Iframe_test</a>
                     </li>
+                    {% if user.is_admin %}
+                        <li role="presentation" class="nav-item">
+                            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                        </li>
+                    {% endif %}
                 </ul>
             <!-- END LEFT MENU -->
 
