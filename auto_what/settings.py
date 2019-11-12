@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'account',
     'course_training',
     'iframe_test',
+    'blog',
 
     #system apps
     'django.contrib.admin',
