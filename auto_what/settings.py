@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'course_training',
     'iframe_test',
     'blog',
+    'redditpage',
 
     #system apps
     'django.contrib.admin',

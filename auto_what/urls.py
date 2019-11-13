@@ -4,9 +4,10 @@ from django.urls import path, include
 from django.conf import settings
 
 from .views import home_screen
-from account.views import registration_view, logout_view, login_view, accoutn_view
+from account.views import registration_view, logout_view, login_view, accoutn_view, must_authenticate_view
 from iframe_test.views import iframe
 from django.contrib.auth import views as auth_views
+from redditpage.views import reddit
 
 urlpatterns = [
     path('', home_screen, name="home"),
@@ -18,6 +19,9 @@ urlpatterns = [
     path('login/', login_view, name="login"),
     path('account/', accoutn_view, name="account"),
     path('iframe/', iframe, name="iframe"),
+    path('reddit/', reddit, name="reddit"),
+    path('blog/', include('blog.urls', 'blog')),
+    path('must_authenticate/', must_authenticate_view, name="must_authenticate"),
 
     # Password reset links (ref: https://github.com/django/django/blob/master/django/contrib/auth/views.py)
     # build in views to customize django built in pass reset
