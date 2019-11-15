@@ -109,6 +109,9 @@
       background: #66d7d7;
     }
 
+    .search-bar{
+		width: 100%;
+	}
 
 </style>
 <div>
@@ -143,11 +146,17 @@
                             <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
                         </li>
                     {% endif %}
+
+                        <form method="get">
+                            <input class="form-control"  type="text" name="q" id="id_q" placeholder="Search...">
+                        </form>
                 </ul>
             <!-- END LEFT MENU -->
 
             <!-- SIGN IN MENU -->
                 <span class="navbar-text actions">
+
+
                     {% if request.user.is_authenticated %}
                         <div class="dropdown nav-item">
                             <a class="btn btn-light action-button" role="button" data-toggle="dropdown" aria-expanded="false"

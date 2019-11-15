@@ -20,6 +20,8 @@
 				<a href="{% url 'blog:detail' post.slug %}">
 					<h2 class="card-title">{{blog_post.title}}</h2>
 				</a>
+                <!-- when we are in production website we should not use safe because it will let the author to use script(html, javascript , ...)
+                 in their post so they may use it to destroy database or else (security measure)-->
 				<p class="card-text">{{blog_post.body|safe|truncatechars:180}}</p>
 				{% if blog_post.author == request.user %}
 					<a href="{% url 'blog:edit' blog_post.slug %}" class="btn btn-primary">Update</a>
